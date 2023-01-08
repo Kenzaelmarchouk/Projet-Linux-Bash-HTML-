@@ -1,0 +1,77 @@
+#!/bin/bash
+
+echo "touch/home/$USER/projet.html"
+
+
+
+{
+
+
+echo "<html>" 
+
+echo "<title> projet de linux </title>"
+
+echo "<head>"
+
+echo "<style type=\"text/css\">"
+
+echo "table th, td  { border : 3px solid back} " 
+
+echo "th { 
+           background-color: #e9ca0;
+           color : black;}"
+echo "td { 
+           background-color: #F3D193;
+           color: white;}"
+echo "</style>"
+echo "</head>"
+echo "<body background="/root/Desktop/pic.jpg">"
+echo "<table width="800" border="1" cellspacing="0" cellpadding="0" align="center">"
+echo "<thead>"
+echo "<tr>"
+echo "<th> groups </th>"
+echo "<th> utilisateurs </th>"     
+echo "<th> espace memoire </th>"
+echo "<th> nombre de repertoire </th>"
+echo "<th> nombre de fichier </th>"
+echo "</tr>"
+echo "</thead>"
+echo "<tr>"
+
+
+for i in `cut -d: -f1  /etc/passwd`
+
+do
+
+d="` find /$i -type d | wc -l`"
+
+
+f="`find /$i -type f | wc -l`"
+espace="`/$i| du -sh `"
+
+echo "<td> `groups  $i` </td>"
+
+echo "<td> $i </td>"
+
+echo "<td> $espace </td>"
+
+echo "<td>  $d </td>"
+
+echo "<td> $f </td>"
+
+echo "</tr>"
+
+
+done
+
+echo "</table>"
+echo "</tr>"
+
+}> /home/$USER/projet.html
+
+
+
+
+
+
+
